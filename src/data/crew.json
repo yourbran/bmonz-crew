@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "name": "테스터",
+      "role": "테스트",
+      "bio": "Node.js와 PostgreSQL을 주로 다룹니다.",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "토스터",
+      "role": "공주님",
+      "bio": "Next.js와 React 기반 UI를 개발합니다.",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "옹스터",
+      "role": "짜바리",
+      "bio": "UX/UI 디자인과 CSS 작업을 합니다.",
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "박스터",
+      "role": "찌바리",
+      "bio": "UX/UI 디자인과 CSS 작업을 합니다.",
+      "image": ""
+    }
+  ]
+  
