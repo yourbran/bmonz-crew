@@ -1,7 +1,7 @@
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 200px)); /* ✅ 화면 크기에 맞춰 자동 정렬 */
-  gap: 16px; /* ✅ 카드 간 간격 유지 */
+  gap: 32px; /* ✅ 카드 간 간격 유지 */
   justify-content: center;
   align-items: center;
   width: 100%;

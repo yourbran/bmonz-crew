@@ -1,10 +1,15 @@
+"use client";
+
 import CrewList from "@/components/CrewList";
+import styles from "../../styles/Page.module.css";
 
 export default function CrewPage() {
   return (
     <main>
-      <h2>크루원 리스트</h2>
-      <CrewList />
+      <div className={styles.pageContainer}>
+        <h2 className={styles.title}>멤버 소개</h2>
+        <CrewList />
+      </div>
     </main>
   );
 }

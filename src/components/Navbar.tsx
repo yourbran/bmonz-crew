@@ -1,22 +1,54 @@
 "use client";
 
-import Link from 'next/link';
-import styles from '../styles/Navbar.module.css';
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation"; // Next.js의 현재 경로 감지
+import styles from "../styles/Navbar.module.css";
 
-const Navbar = () => {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname(); // 현재 경로 가져오기
+
+  // 메뉴 바깥을 클릭하면 닫히도록 처리
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        event.target instanceof Element && // target이 존재하고 Element인지 확인
+        !event.target.closest(`.${styles.navbar}`)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isOpen]);
+
+  // 페이지 이동 시 메뉴 자동 닫기
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <nav className={styles.navbar}>
-      <ul>
-        <li>
-          <Link href="/crew"> 크루원 소개 </Link>
-        </li>
-        <li>
-          <Link href="/blog"> 블로그 </Link>
-        </li>
-        {/* 추가적인 메뉴 항목을 여기에 추가 */}
-      </ul>
+      <div
+        className={`${styles.hamburger} ${isOpen ? styles.open : ""}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* 메뉴 리스트 */}
+      <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
+        <ul>
+          <li>BMONZ</li>
+          <li>BLOGMON</li>
+        </ul>
+      </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

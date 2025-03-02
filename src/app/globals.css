@@ -16,6 +16,11 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  overflow: scroll; /* 스크롤바 항상 유지 */
+  scrollbar-gutter: stable; /* 레이아웃 변화 방지 */
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
