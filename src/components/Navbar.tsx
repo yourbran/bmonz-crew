@@ -45,8 +45,8 @@ export default function Navbar() {
       {/* 메뉴 리스트 */}
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
         <ul>
-          <li>BMONZ</li>
-          <li>BLOGMON</li>
+          <li>Members</li>
+          <li>Story</li>
         </ul>
       </div>
     </nav>

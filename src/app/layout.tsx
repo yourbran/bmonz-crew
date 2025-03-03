@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import { motion, AnimatePresence } from "framer-motion";
 import "./globals.css";
 
-const inter = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
+const defaultFont = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export default function RootLayout({
   children,
@@ -13,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={inter.className}>
-      <body>
+    <html lang="ko">
+      <body className={defaultFont.className}>
         <Header />
         <AnimatePresence mode="sync">
           <motion.div

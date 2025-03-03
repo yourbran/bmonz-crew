@@ -7,7 +7,7 @@ export default function CrewPage() {
   return (
     <main>
       <div className={styles.pageContainer}>
-        <h2 className={styles.title}>멤버 소개</h2>
+        <h2 className={styles.title}>Boulder Monsters</h2>
         <CrewList />
       </div>
     </main>
