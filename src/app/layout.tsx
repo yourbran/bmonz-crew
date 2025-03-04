@@ -1,11 +1,11 @@
 "use client";
 
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import Header from '@/components/Header';
 import { motion, AnimatePresence } from "framer-motion";
 import "./globals.css";
 
-const defaultFont = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
+const defaultFont = Inter({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export default function RootLayout({
   children,

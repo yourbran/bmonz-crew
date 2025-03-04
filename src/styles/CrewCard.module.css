@@ -16,9 +16,11 @@
   position: relative;
   max-width: 200px; /* ✅ 카드 최대 크기 설정 */
   min-width: 200px; /* ✅ 최소 크기 설정 */
+  font-family: inherit;
 }
 
 .cardContent {
+  font-family: "JalnanGothic", sans-serif !important;
   width: 100%;
   text-align: center;
   background: rgba(0, 0, 0, 0.6); /* ✅ 텍스트 가독성을 위해 반투명 배경 추가 */
