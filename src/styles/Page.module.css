@@ -3,10 +3,14 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 32px;
+
+  height: calc(100vh - var(--header-height)); /* 전체 높이에서 헤더 제외 */
+  padding-top: var(--header-height); /* Header만큼 공간 확보 */
+  padding: 6vh 5vw; /* 내부 패딩 */
+  box-sizing: border-box;
+  overflow: auto; /* 내용이 많을 때만 스크롤 */
 }
 
 .title {
   font-family: "yg-jalnan", sans-serif;
-  margin-bottom: 16px;
 }

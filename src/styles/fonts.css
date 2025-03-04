@@ -85,6 +85,6 @@ http://scripts.sil.org/OFL
 }
 
 /* 한글에는 Pretendard 기본 적용 */
-:lang(ko) {
+body:lang(ko) {
     font-family: "Pretendard", sans-serif;
   }

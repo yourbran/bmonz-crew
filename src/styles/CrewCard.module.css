@@ -20,7 +20,8 @@
 }
 
 .cardContent {
-  font-family: "JalnanGothic", sans-serif !important;
+  font-family: "Pretendard", sans-serif !important;
+  font-weight: 600;
   width: 100%;
   text-align: center;
   background: rgba(0, 0, 0, 0.6); /* ✅ 텍스트 가독성을 위해 반투명 배경 추가 */

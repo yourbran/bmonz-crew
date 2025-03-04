@@ -1,18 +1,19 @@
 .header {
   width: 100%;
-  min-height: 60px;
+  height: 60px; /* min-height 대신 height 사용 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Header 전체에 그림자 적용 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  position: fixed; /* 스크롤 내려도 항상 고정 */
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* 다른 요소들보다 위에 배치 */
+  z-index: 1000;
 }
+
   
 .logoText {
   font-family: "yg-jalnan", sans-serif !important; /* 우선순위를 높이기 위해 !important 추가 예정 */
