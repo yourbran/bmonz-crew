@@ -1,0 +1,28 @@
+.storyCard {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.2s ease-in-out;
+    width: 100%;
+    max-width: 600px;
+}
+
+.storyCard:hover {
+    transform: translateY(-5px);
+}
+
+.cardContent {
+    padding: 16px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.content {
+    font-size: 1rem;
+    color: #555;
+}

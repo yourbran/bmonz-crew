@@ -1,7 +1,7 @@
 "use client";
 
 import CrewList from "@/components/CrewList";
-import styles from "../../styles/Page.module.css";
+import styles from "../../styles/Crew.module.css";
 
 export default function CrewPage() {
   return (
