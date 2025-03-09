@@ -2,11 +2,13 @@
     {
       "id": 1,
       "title": "첫 번째 이야기",
+      "image": "/default-avatar.png",
       "description": "우리 크루가 시작된 이야기"
     },
     {
       "id": 2,
       "title": "두 번째 이야기",
+      "image": "/default-avatar.png",
       "description": "프로젝트 개발 과정"
     }
   ]

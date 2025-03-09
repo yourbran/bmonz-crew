@@ -13,18 +13,18 @@
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  scrollbar-gutter: stable;
-  min-height: 100vh;
+html {
+  overflow-y: auto; /* 내용이 많을 때만 세로 스크롤 */
+  scrollbar-gutter: stable; /* 스크롤바 공간을 항상 유지하여 이동 방지 */
 }
 
-
-html {
-  overflow: scroll; /* 스크롤바 항상 유지 */
-  scrollbar-gutter: stable; /* 레이아웃 변화 방지 */
+html, body {
+  max-width: 100vw;
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 body {

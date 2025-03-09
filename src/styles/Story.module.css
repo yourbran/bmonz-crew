@@ -1,30 +1,68 @@
-.container {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .storyList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-  }
-  
-  .card {
-    width: 250px;
-    padding: 16px;
-    background: white;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    text-decoration: none;
-    color: black;
-    text-align: left;
-  }
-  
-  .card h3 {
-    margin: 0;
-  }
-  
-  .card:hover {
-    background-color: #f9f9f9;
-  }
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  height: calc(100vh - var(--header-height)); /* 전체 높이에서 헤더 제외 */
+  margin-top: 60px; /* 헤더 높이만큼 상단 여백 추가 */
+  padding: 6vh 5vw; /* 내부 패딩 */
+  overflow: auto; /* 내용이 많을 때만 스크롤 */
+}
+
+.title {
+  font-family: "yg-jalnan", sans-serif;
+}
+
+.storyList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 카드 간 간격 */
+  width: 100%;
+  max-width: 800px; /* 카드 리스트 최대 너비 */
+}
+
+.storyCard {
+  display: flex;
+  flex-direction: row; /* 가로 정렬 */
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 100%;
+  max-width: 800px; /* 가로로 긴 카드 */
+  min-height: 120px; /* 기존보다 더 낮은 높이 */
+}
+
+.storyImageWrapper {
+  width: 40%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.storyImage {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.storyContent {
+  flex: 1;
+  padding-left: 16px;
+  text-align: left;
+}
+
+.storyContent h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.storyContent p {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: #555;
+}
