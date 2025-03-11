@@ -6,6 +6,15 @@
     transition: transform 0.2s ease-in-out;
     width: 100%;
     max-width: 600px;
+    min-height: 40vh; /* 모바일 기준 한 화면에 두 개 보이도록 조정 */
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .cardContainer {
+        max-width: 90vw; /* 모바일에서는 화면 폭의 90% 차지 */
+        min-height: 45vh; /* 모바일 화면에서 두 개 보이도록 조정 */
+    }
 }
 
 .cardContent {

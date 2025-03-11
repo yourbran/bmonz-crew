@@ -15,7 +15,7 @@ export default function CrewCard({ crew }: { crew: { id: number; name: string; r
     <div
       className={styles.cardContainer}
       onClick={handleClick}
-      style={{ backgroundImage: `url(${crew.image || defaultImage})` }} // ✅ 카드 전체를 이미지로 채우기
+      style={{ backgroundImage: `url(${crew.image || defaultImage})` }} // 카드 전체를 이미지로 채우기
     >
       <div className={styles.cardContent}>
         <h3>{crew.name}</h3>
