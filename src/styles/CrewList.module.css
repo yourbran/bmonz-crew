@@ -6,6 +6,6 @@
   align-items: center;
   width: 100%;
   max-width: 1200px; /* ✅ 최대 가로 크기 제한 (필요 시 조정) */
-  margin: 20px auto; /* ✅ 페이지 상단과 간격 조정 */
+  margin: 40px auto; /* ✅ 페이지 상단과 간격 조정 */
   padding: 0 16px;
 }

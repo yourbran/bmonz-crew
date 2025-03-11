@@ -6,7 +6,7 @@ export default function StoryList() {
     return (
         <div className={styles.cardGrid}>
             {stories.map((story) => (
-                <StoryCard key={story.id} title={story.title} content={story.description} />
+                <StoryCard key={story.id} story={story} />
             ))}
         </div>
     );

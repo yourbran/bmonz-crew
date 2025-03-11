@@ -9,6 +9,7 @@
   justify-content: space-between;
   width: 26px;
   height: 20px;
+  right: 10px;
   cursor: pointer;
 }
 
@@ -38,7 +39,7 @@
 .menu {
   position: absolute;
   top: 40px;
-  right: 0;
+  right: 10px;
   background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

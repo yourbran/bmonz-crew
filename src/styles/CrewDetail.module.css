@@ -1,0 +1,11 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  
+    height: calc(100vh - var(--header-height)); /* 전체 높이에서 헤더 제외 */
+    margin-top: 60px; /* 헤더 높이만큼 상단 여백 추가 */
+    padding: 6vh 5vw; /* 내부 패딩 */
+    overflow: auto; /* 내용이 많을 때만 스크롤 */
+  }

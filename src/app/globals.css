@@ -14,8 +14,7 @@
 }
 
 html {
-  overflow-y: auto; /* 내용이 많을 때만 세로 스크롤 */
-  scrollbar-gutter: stable; /* 스크롤바 공간을 항상 유지하여 이동 방지 */
+  
 }
 
 html, body {
