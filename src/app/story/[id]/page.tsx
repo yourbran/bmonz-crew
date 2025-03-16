@@ -1,53 +1,37 @@
-"use client";
+// /src/app/story/[id]/page.tsx
+import { notFound } from 'next/navigation';
+import fs from 'fs';
+import path from 'path';
+import { serialize } from 'next-mdx-remote/serialize';
+import rehypeRaw from 'rehype-raw';
+import MdxContent from '@/components/MdxContent';
 
-import { motion } from "framer-motion";
-import { use, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import stories from "@/data/stories.json";
-import styles from "@/styles/StoryDetail.module.css";
-import ReactMarkdown from "react-markdown";
-import matter from "gray-matter"; // Front Matter 제거
-import remarkGfm from "remark-gfm";
-import remarkFrontmatter from "remark-frontmatter";
+interface StoryPageProps {
+  params: { id: string } | Promise<{ id: string }>;
+}
 
-export default function StoryDetail({ params }: { params: Promise<{ id: string }> }) {
-  const router = useRouter();
-  const { id } = use(params);
-  const [content, setContent] = useState("");
+export default async function StoryPage({ params }: StoryPageProps) {
+  const { id } = await params;
+  const filePath = path.join(process.cwd(), 'public', 'stories', `${id}.mdx`);
 
-  useEffect(() => {
-    if (id) {
-        fetch(`/stories/${id}.md`)
-            .then((res) => res.text())
-            .then((data) => {
-                // Front Matter 제거
-                const { content } = matter(data);
-                setContent(content);
-            })
-            .catch(() => setContent("Error loading content"));
-    }
-  }, [id]);
-
-  const story = stories.find((s) => s.id === Number(id));
-
-  if (!story) {
-    return <p>이야기를 찾을 수 없습니다.</p>;
+  if (!fs.existsSync(filePath)) {
+    notFound();
   }
 
+  const source = fs.readFileSync(filePath, 'utf8');
+
+  const mdxSource = await serialize(source, {
+    mdxOptions: {
+      rehypePlugins: [
+        [rehypeRaw, { passThrough: ['mdxJsxFlowElement', 'mdxJsxTextElement'] }],
+      ],
+    },
+    scope: {},
+  });
+
   return (
-    <div className={styles.pageContainer}>
-      <motion.div
-        initial={{ opacity: 0, x: 50 }} // 페이지 진입 시 효과
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -50 }} // 페이지 떠날 때 효과
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-        style={{ textAlign: "center", padding: "20px" }}
-      >
-        <ReactMarkdown remarkPlugins={[remarkGfm, remarkFrontmatter]}>
-          {content}
-        </ReactMarkdown>
-        <button onClick={() => router.back()}>뒤로 가기</button>
-      </motion.div>
-    </div>
+    <article>
+      <MdxContent mdxSource={mdxSource} />
+    </article>
   );
 }
