@@ -1,15 +1,19 @@
 .navbar {
   position: relative; /* 메뉴가 자연스럽게 나타나도록 설정 */
+  width: 100%;
   font-family: inherit; /* Next.js 글로벌 폰트 상속 */
 }
 
 .hamburger {
+  position: absolute; /* 부모가 relative일 경우 */
+  top: 50%;         /* 수직 중앙 */
+  right: 5px;      /* 오른쪽 끝에서 10px 간격 */
+  transform: translateY(-50%); /* 자신의 높이의 50%만큼 위로 이동 */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 26px;
   height: 20px;
-  right: 10px;
   cursor: pointer;
 }
 
@@ -37,18 +41,16 @@
 
 /* 메뉴 스타일 */
 .menu {
-  position: absolute;
-  top: 40px;
-  right: 10px;
+  position: fixed;
+  top: 60px; /* Header 높이에 맞게 조정 */
+  left: 0;
+  right: 0;
   background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  width: 120px;
+  z-index: 10;
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   pointer-events: none;
-  font-family: inherit; /* 메뉴에도 글로벌 폰트 상속 */
 }
 
 .menu.open {

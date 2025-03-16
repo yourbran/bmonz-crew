@@ -3,18 +3,18 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import styles from "../styles/Navbar.module.css";
+import styles from "@/styles/Navbar.module.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // 현재 경로 가져오기
+  const pathname = usePathname();
 
   // 메뉴 바깥을 클릭하면 닫히도록 처리
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
         isOpen &&
-        event.target instanceof Element && // target이 존재하고 Element인지 확인
+        event.target instanceof Element &&
         !event.target.closest(`.${styles.navbar}`)
       ) {
         setIsOpen(false);
@@ -43,11 +43,23 @@ export default function Navbar() {
         <span></span>
       </div>
 
-      {/* 메뉴 리스트 */}
+      {/* 드롭다운 메뉴 */}
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
         <ul>
-          <li><Link href="/crew" className={styles.menuLink}>멤버소개</Link></li>
-          <li><Link href="/story" className={styles.menuLink}>이야기</Link></li>
+          <li>
+            <Link href="/crew" className={styles.menuLink}>
+              멤버소개
+            </Link>
+          </li>
+          <li>
+            <Link href="/story" className={styles.menuLink}>
+              이야기
+            </Link>
+          </li>
+          {/* 닫기 버튼 */}
+          <li className={styles.menuLink} onClick={() => setIsOpen(false)}>
+            닫기
+          </li>
         </ul>
       </div>
     </nav>
