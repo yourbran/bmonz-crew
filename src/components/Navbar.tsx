@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation"; // Next.js의 현재 경로 감지
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
 
@@ -46,8 +46,8 @@ export default function Navbar() {
       {/* 메뉴 리스트 */}
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
         <ul>
-          <li><Link href="/crew">멤버소개</Link></li>
-          <li><Link href="/story">이야기</Link></li>
+          <li><Link href="/crew" className={styles.menuLink}>멤버소개</Link></li>
+          <li><Link href="/story" className={styles.menuLink}>이야기</Link></li>
         </ul>
       </div>
     </nav>
