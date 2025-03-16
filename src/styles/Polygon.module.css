@@ -16,7 +16,7 @@
     font-size: 12px;
     white-space: nowrap;
     pointer-events: none;
-    z-index: 20;
+    z-index: 1000;
     /* 간단한 fade in/out 효과 */
     opacity: 0;
     transition: opacity 0.2s ease-in-out;

@@ -17,11 +17,11 @@ export default function CrewDetail() {
     highestGrade: "V8",
     profilePicture: "/default-avatar.png", // 실제 경로로 수정
     climbingSkills: {
-      grip: 80,         // 0 ~ 100
-      balance: 70,
-      routeFinding: 90,
-      endurance: 75,
-      flexibility: 85,
+      grip: 8,
+      balance: 7,
+      routeFinding: 9,
+      endurance: 7,
+      flexibility: 8,
     },
   };
 
