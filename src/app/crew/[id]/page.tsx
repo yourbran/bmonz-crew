@@ -5,11 +5,28 @@ import { useParams } from "next/navigation";
 import crewData from "@/data/crew.json";
 import Image from "next/image";
 import styles from "@/styles/CrewDetail.module.css";
+import FiveSidedPolygon from "@/components/FiveSidedPolygon";
+
 
 export default function CrewDetail() {
+
+  const sampleData = {
+    name: "홍길동",
+    occupation: "프로 클라이머",
+    career: "5년",
+    highestGrade: "V8",
+    profilePicture: "/default-avatar.png", // 실제 경로로 수정
+    climbingSkills: {
+      grip: 80,         // 0 ~ 100
+      balance: 70,
+      routeFinding: 90,
+      endurance: 75,
+      flexibility: 85,
+    },
+  };
+
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id; // 배열이면 첫 번째 값 사용
-  console.log("🔍 params.id:", id);
 
   const crew = crewData.find((c) => c.id.toString() === id) || null;
   if (!crew) return <p style={{ textAlign: "center" }}>크루원을 찾을 수 없습니다.</p>;
@@ -23,21 +40,30 @@ export default function CrewDetail() {
         transition={{ duration: 0.6, ease: "easeInOut" }}
         style={{ textAlign: "center", padding: "20px" }}
       >
-        <Image 
-          src={crew.image || "/default-avatar.png"}
-          alt={crew.name}
-          width={150}
-          height={150}
-          style={{
-            borderRadius: "50%",
-            objectFit: "cover",
-            backgroundColor: "#f0f0f0"
-          }}
-          priority={true}
-        />
-        <h1>{crew.name}</h1>
-        <h2>{crew.role}</h2>
-        <p>{crew.bio}</p>
+        {/* 프로필 사진 */}
+        <div className={styles.profilePicture}>
+          <Image 
+            src={sampleData.profilePicture} 
+            alt={sampleData.name} 
+            width={200} 
+            height={200} 
+            className={styles.profileImg}
+          />
+        </div>
+
+        {/* 인물 기본정보 */}
+        <div className={styles.basicInfo}>
+          <h1>{sampleData.name}</h1>
+          <p>직업: {sampleData.occupation}</p>
+          <p>클라이밍 경력: {sampleData.career}</p>
+          <p>최고 그레이드: {sampleData.highestGrade}</p>
+        </div>
+
+        {/* 클라이밍 능력 오각형 */}
+        <div className={styles.climbingSkills}>
+          <h2>클라이밍 능력</h2>
+          <FiveSidedPolygon skills={sampleData.climbingSkills} />
+        </div>
       </motion.div>
     </div>
   );

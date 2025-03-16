@@ -45,7 +45,9 @@
   top: 60px; /* Header 높이에 맞게 조정 */
   left: 0;
   right: 0;
-  background: white;
+  background: #f3f3f3; /* 약간의 오프 화이트 색상 */
+  border: 1px solid #eaeaea; /* 연한 테두리 */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 효과 */
   z-index: 10;
   opacity: 0;
   transform: translateY(-10px);
@@ -81,5 +83,5 @@
 }
 
 .menu li:hover {
-  background-color: #f0f0f0;
+  background-color: #e6e6e6;
 }

@@ -5,7 +5,51 @@
     text-align: center;
   
     height: calc(100vh - var(--header-height)); /* 전체 높이에서 헤더 제외 */
-    margin-top: 60px; /* 헤더 높이만큼 상단 여백 추가 */
+    margin-top: 20px; /* 헤더 높이만큼 상단 여백 추가 */
     padding: 6vh 5vw; /* 내부 패딩 */
     overflow: auto; /* 내용이 많을 때만 스크롤 */
   }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  .profilePicture {
+    margin-bottom: 16px;
+  }
+  
+  .profileImg {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .basicInfo {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .basicInfo h1 {
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+  }
+  
+  .basicInfo p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .climbingSkills {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .climbingSkills h2 {
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+  }
+  
