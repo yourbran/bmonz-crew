@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: visible;
   }
   
   /* 인터랙티브 툴팁 스타일 */
@@ -17,14 +18,10 @@
     white-space: nowrap;
     pointer-events: none;
     z-index: 1000;
-    /* 간단한 fade in/out 효과 */
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
   }
   
-  /* 툴팁이 표시될 때, JavaScript에서 inline 스타일로 opacity를 변경할 수 있음 */
-  /* 또는 .active 클래스를 사용해서 제어할 수 있음 */
   .tooltip.active {
     opacity: 1;
   }
-  

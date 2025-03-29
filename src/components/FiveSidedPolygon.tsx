@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "@/styles/Polygon.module.css";
 
 interface Skills {
@@ -47,7 +47,7 @@ export default function FiveSidedPolygon({ skills }: { skills: Skills }) {
     .join(" ");
 
   // 배경 동심원: 4개의 원 (25%, 50%, 75%, 100% 기준)
-  const referenceCircles = [0.25, 0.5, 0.75, 1].map((p, i) => {
+  const referenceCircles = [0.4, 0.6, 0.8, 1].map((p, i) => {
     const r = p * maxRadius;
     return (
       <circle
@@ -61,6 +61,29 @@ export default function FiveSidedPolygon({ skills }: { skills: Skills }) {
       />
     );
   });
+
+  const referenceLabels = [0.4, 0.6, 0.8, 1].map((p, i) => {
+    const r = p * maxRadius;
+    // 정수 점수로 표시 (예: 0.4*10 = 4)
+    const score = Math.round(p * 10);
+    // 한 자릿수라면 dx를 -2로, 두 자릿수라면 0으로 설정 (값은 디자인에 따라 조정)
+    const dx = score < 10 ? "-1" : "0";
+    return (
+      <text
+        key={`ref-label-${i}`}
+        x={center.x + r}
+        y={center.y}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize="10"
+        fill="#999"
+        dx={dx}
+      >
+        {score}
+      </text>
+    );
+  });
+  
 
   // 라벨 위치 계산: labelRadius에 추가 여백(labelExtra) 적용
   const labelRadius = maxRadius + extraMargin - 5;
@@ -93,6 +116,53 @@ export default function FiveSidedPolygon({ skills }: { skills: Skills }) {
   // 인터랙티브 툴팁: 각 꼭지점에 마우스 오버/클릭 시 점수 표시 (점수는 그대로 0~10)
   const [tooltip, setTooltip] = useState<TooltipData | null>(null);
 
+  // container와 svg에 ref를 할당합니다.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  // 디버깅: container와 SVG의 실제 크기 출력
+  useEffect(() => {
+    if (containerRef.current && svgRef.current) {
+      console.log("Container bounding rect:", containerRef.current.getBoundingClientRect());
+      console.log("SVG bounding rect:", svgRef.current.getBoundingClientRect());
+    }
+  }, []);
+
+  // SVG의 전체 크기 (viewBox 기준)
+  const svgSize = totalRadius * 2;
+
+  const handleVertexMouseEnter = (skill: keyof Skills, value: number, x: number, y: number) => {
+    console.log(`MouseEnter: ${skill} at (${x}, ${y}) with ${value}점`);
+    if (svgRef.current && containerRef.current) {
+      const svgRect = svgRef.current.getBoundingClientRect();
+      // 스케일링 비율 계산 (실제 픽셀 / viewBox 크기)
+      const scale = svgRect.width / svgSize;
+      const scaledX = x * scale;
+      const scaledY = y * scale;
+      setTooltip({ text: `${value.toFixed(1)}점`, x: scaledX, y: scaledY });
+    } else {
+      setTooltip({ text: `${value.toFixed(1)}점`, x, y });
+    }
+  };
+
+  const handleVertexMouseLeave = (skill: keyof Skills) => {
+    console.log(`MouseLeave: ${skill}`);
+    setTooltip(null);
+  };
+
+  const handleVertexClick = (skill: keyof Skills, value: number, x: number, y: number) => {
+    console.log(`Click: ${skill} at (${x}, ${y}) with ${value}점`);
+    if (svgRef.current && containerRef.current) {
+      const svgRect = svgRef.current.getBoundingClientRect();
+      const scale = svgRect.width / svgSize;
+      const scaledX = x * scale;
+      const scaledY = y * scale;
+      setTooltip({ text: `${value.toFixed(1)}점`, x: scaledX, y: scaledY });
+    } else {
+      setTooltip({ text: `${value.toFixed(1)}점`, x, y });
+    }
+  };
+
   const vertexCircles = skillNames.map((skill, i) => {
     const angle = -Math.PI / 2 + i * angleStep;
     const value = skills[skill];
@@ -107,32 +177,18 @@ export default function FiveSidedPolygon({ skills }: { skills: Skills }) {
         r={5}
         fill="rgba(0,0,0,0)" // 투명
         pointerEvents="all"
-        onMouseEnter={() => {
-            console.log(`MouseEnter: ${skill} at (${x}, ${y}) with ${value}점`);
-            setTooltip({ text: `${value.toFixed(1)}점`, x, y });
-          }}
-          onMouseLeave={() => {
-            console.log(`MouseLeave: ${skill}`);
-            setTooltip(null);
-          }}
-          onClick={() => {
-            console.log(`Click: ${skill} at (${x}, ${y}) with ${value}점`);
-            setTooltip({ text: `${value.toFixed(1)}점`, x, y });
-          }}
+        onMouseEnter={() => handleVertexMouseEnter(skill, value, x, y)}
+        onMouseLeave={() => handleVertexMouseLeave(skill)}
+        onClick={() => handleVertexClick(skill, value, x, y)}
       />
     );
   });
 
-  // SVG 전체 크기 설정
-  const svgSize = totalRadius * 2;
-
   return (
-    <div
-      className={styles.polygonContainer}
-      style={{ position: "relative", display: "inline-block" }}
-    >
-      <svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
+    <div ref={containerRef} className={styles.polygonContainer} style={{ position: "relative", display: "inline-block" }}>
+      <svg ref={svgRef} width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
         {referenceCircles}
+        {referenceLabels}
         <polygon points={points} fill="rgba(0, 123, 255, 0.3)" stroke="#007bff" strokeWidth="2" />
         {labels}
         {vertexCircles}
@@ -151,6 +207,8 @@ export default function FiveSidedPolygon({ skills }: { skills: Skills }) {
             borderRadius: "4px",
             fontSize: "12px",
             pointerEvents: "none",
+            zIndex: 1000,
+            opacity: 1,
           }}
         >
           {tooltip.text}

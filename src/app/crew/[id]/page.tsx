@@ -7,15 +7,13 @@ import Image from "next/image";
 import styles from "@/styles/CrewDetail.module.css";
 import FiveSidedPolygon from "@/components/FiveSidedPolygon";
 
-
 export default function CrewDetail() {
-
   const sampleData = {
-    name: "홍길동",
-    occupation: "프로 클라이머",
-    career: "5년",
-    highestGrade: "V8",
-    profilePicture: "/default-avatar.png", // 실제 경로로 수정
+    name: "최필성",
+    occupation: "개발자",
+    career: "12년",
+    highestGrade: "V9",
+    profilePicture: "/default-avatar.png",
     climbingSkills: {
       grip: 8,
       balance: 7,
@@ -26,7 +24,7 @@ export default function CrewDetail() {
   };
 
   const params = useParams();
-  const id = Array.isArray(params.id) ? params.id[0] : params.id; // 배열이면 첫 번째 값 사용
+  const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
   const crew = crewData.find((c) => c.id.toString() === id) || null;
   if (!crew) return <p style={{ textAlign: "center" }}>크루원을 찾을 수 없습니다.</p>;
@@ -34,35 +32,52 @@ export default function CrewDetail() {
   return (
     <div className={styles.pageContainer}>
       <motion.div
-        initial={{ opacity: 0, x: 50 }} // 페이지 진입 시 효과
+        initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -50 }} // 페이지 떠날 때 효과
+        exit={{ opacity: 0, x: -50 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         style={{ textAlign: "center", padding: "20px" }}
       >
-        {/* 프로필 사진 */}
-        <div className={styles.profilePicture}>
-          <Image 
-            src={sampleData.profilePicture} 
-            alt={sampleData.name} 
-            width={200} 
-            height={200} 
-            className={styles.profileImg}
-          />
+        {/* 프로필 사진 섹션 */}
+        <div className={styles.section}>
+          <div className={styles.profilePicture}>
+            <Image 
+              src={sampleData.profilePicture} 
+              alt={sampleData.name} 
+              width={200} 
+              height={200} 
+              className={styles.profileImg}
+            />
+          </div>
         </div>
 
-        {/* 인물 기본정보 */}
-        <div className={styles.basicInfo}>
-          <h1>{sampleData.name}</h1>
-          <p>직업: {sampleData.occupation}</p>
-          <p>클라이밍 경력: {sampleData.career}</p>
-          <p>최고 그레이드: {sampleData.highestGrade}</p>
+        {/* 인물 기본정보 섹션 */}
+        <div className={styles.section}>
+          <div className={styles.basicInfo}>
+            <h1>{sampleData.name}</h1>
+            <div className={styles.infoList}>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>직업</span>
+                <span className={styles.infoValue}>{sampleData.occupation}</span>
+              </div>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>클라이밍 경력</span>
+                <span className={styles.infoValue}>{sampleData.career}</span>
+              </div>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>최고 그레이드</span>
+                <span className={styles.infoValue}>{sampleData.highestGrade}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* 클라이밍 능력 오각형 */}
-        <div className={styles.climbingSkills}>
-          <h2>클라이밍 능력</h2>
-          <FiveSidedPolygon skills={sampleData.climbingSkills} />
+        {/* 클라이밍 능력 섹션 */}
+        <div className={styles.section}>
+          <div className={styles.climbingSkills}>
+            <h2>퍼포먼스</h2>
+            <FiveSidedPolygon skills={sampleData.climbingSkills} />
+          </div>
         </div>
       </motion.div>
     </div>
