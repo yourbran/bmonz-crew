@@ -1,31 +1,75 @@
 [
     {
       "id": 1,
-      "name": "테스터",
+      "name": "최필성",
       "role": "테스트",
       "bio": "Node.js와 PostgreSQL을 주로 다룹니다.",
-      "image": ""
+      "image": "",
+      "occupation": "개발자",
+      "career": "12년",
+      "highestGrade": "V9",
+      "profilePicture": "/default-avatar.png",
+      "climbingSkills": {
+        "grip": 8,
+        "balance": 7,
+        "routeFinding": 9,
+        "endurance": 7,
+        "flexibility": 8
+      }
     },
     {
       "id": 2,
-      "name": "토스터",
+      "name": "이민희",
       "role": "공주님",
       "bio": "Next.js와 React 기반 UI를 개발합니다.",
-      "image": ""
+      "image": "",
+      "occupation": "소방관",
+      "career": "5년",
+      "highestGrade": "V3",
+      "profilePicture": "/default-avatar.png",
+      "climbingSkills": {
+        "grip": 4,
+        "balance": 6,
+        "routeFinding": 3,
+        "endurance": 5,
+        "flexibility": 8
+      }
     },
     {
       "id": 3,
-      "name": "옹스터",
+      "name": "오경환",
       "role": "짜바리",
       "bio": "UX/UI 디자인과 CSS 작업을 합니다.",
-      "image": ""
+      "image": "",
+      "occupation": "Allez 매니저",
+      "career": "12년",
+      "highestGrade": "V10",
+      "profilePicture": "/default-avatar.png",
+      "climbingSkills": {
+        "grip": 8,
+        "balance": 9,
+        "routeFinding": 8,
+        "endurance": 7,
+        "flexibility": 8
+      }
     },
     {
       "id": 4,
-      "name": "박스터",
+      "name": "조영준",
       "role": "찌바리",
       "bio": "UX/UI 디자인과 CSS 작업을 합니다.",
-      "image": ""
+      "image": "",
+      "occupation": "회사원",
+      "career": "5년",
+      "highestGrade": "V7",
+      "profilePicture": "/default-avatar.png",
+      "climbingSkills": {
+        "grip": 7,
+        "balance": 8,
+        "routeFinding": 5,
+        "endurance": 7,
+        "flexibility": 8
+      }
     }
   ]
   

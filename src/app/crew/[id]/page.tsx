@@ -2,29 +2,37 @@
 
 import { motion } from "framer-motion";
 import { useParams, usePathname } from "next/navigation";
-import crewData from "@/data/crew.json";
+import crewDataRaw from "@/data/crew.json";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import styles from "@/styles/CrewDetail.module.css";
 import FiveSidedPolygon from "@/components/FiveSidedPolygon";
 
+// 타입 정의
+interface Skills {
+  grip: number;
+  balance: number;
+  routeFinding: number;
+  endurance: number;
+  flexibility: number;
+}
+
+interface CrewMember {
+  id: number;
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  occupation: string;
+  career: string;
+  highestGrade: string;
+  profilePicture: string;
+  climbingSkills: Skills;
+}
+
+const crewData = crewDataRaw as CrewMember[];
 
 export default function CrewDetail() {
-
-  const sampleData = {
-    name: "최필성",
-    occupation: "개발자",
-    career: "12년",
-    highestGrade: "V9",
-    profilePicture: "/default-avatar.png",
-    climbingSkills: {
-      grip: 8,
-      balance: 7,
-      routeFinding: 9,
-      endurance: 7,
-      flexibility: 8,
-    },
-  };
 
   const pathName = usePathname();
   const params = useParams();
@@ -58,8 +66,8 @@ export default function CrewDetail() {
         <div className={styles.section}>
           <div className={styles.profilePicture}>
             <Image 
-              src={sampleData.profilePicture} 
-              alt={sampleData.name} 
+              src={crew.profilePicture} 
+              alt={crew.name} 
               width={200} 
               height={200} 
               className={styles.profileImg}
@@ -70,19 +78,19 @@ export default function CrewDetail() {
         {/* 인물 기본정보 섹션 */}
         <div className={styles.section}>
           <div className={styles.basicInfo}>
-            <h1>{sampleData.name}</h1>
+            <h1>{crew.name}</h1>
             <div className={styles.infoList}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>직업</span>
-                <span className={styles.infoValue}>{sampleData.occupation}</span>
+                <span className={styles.infoValue}>{crew.occupation}</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>클라이밍 경력</span>
-                <span className={styles.infoValue}>{sampleData.career}</span>
+                <span className={styles.infoValue}>{crew.career}</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>최고 그레이드</span>
-                <span className={styles.infoValue}>{sampleData.highestGrade}</span>
+                <span className={styles.infoValue}>{crew.highestGrade}</span>
               </div>
             </div>
           </div>
@@ -92,7 +100,7 @@ export default function CrewDetail() {
         <div className={styles.section}>
           <div className={styles.climbingSkills}>
             <h2>퍼포먼스</h2>
-            <FiveSidedPolygon skills={sampleData.climbingSkills} />
+            <FiveSidedPolygon skills={crew.climbingSkills} />
           </div>
         </div>
       </motion.div>
