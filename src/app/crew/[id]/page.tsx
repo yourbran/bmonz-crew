@@ -1,13 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import crewData from "@/data/crew.json";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import styles from "@/styles/CrewDetail.module.css";
 import FiveSidedPolygon from "@/components/FiveSidedPolygon";
 
+
 export default function CrewDetail() {
+
   const sampleData = {
     name: "최필성",
     occupation: "개발자",
@@ -23,8 +26,20 @@ export default function CrewDetail() {
     },
   };
 
+  const pathName = usePathname();
   const params = useParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
+
+  // 더미 상태를 추가해서 강제로 리렌더링 유도
+  const [dummy, setDummy] = useState(0);
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 짧은 딜레이 후 dummy state 업데이트
+    const timeout = setTimeout(() => {
+      setDummy((prev) => prev + 1);
+    }, 100); // 100ms 정도
+    return () => clearTimeout(timeout);
+  }, []);
 
   const crew = crewData.find((c) => c.id.toString() === id) || null;
   if (!crew) return <p style={{ textAlign: "center" }}>크루원을 찾을 수 없습니다.</p>;
@@ -32,6 +47,7 @@ export default function CrewDetail() {
   return (
     <div className={styles.pageContainer}>
       <motion.div
+        key={`${pathName}-${dummy}`} // '뒤로가기'를 통해 해당 페이지로 되돌아올 경우 정상적으로 렌더링 되도록 설정
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: -50 }}

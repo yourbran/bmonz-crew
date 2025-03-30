@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import styles from "@/styles/Polygon.module.css";
 
 interface Skills {
@@ -119,14 +119,6 @@ export default function FiveSidedPolygon({ skills }: { skills: Skills }) {
   // container와 svg에 ref를 할당합니다.
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-
-  // 디버깅: container와 SVG의 실제 크기 출력
-  useEffect(() => {
-    if (containerRef.current && svgRef.current) {
-      console.log("Container bounding rect:", containerRef.current.getBoundingClientRect());
-      console.log("SVG bounding rect:", svgRef.current.getBoundingClientRect());
-    }
-  }, []);
 
   // SVG의 전체 크기 (viewBox 기준)
   const svgSize = totalRadius * 2;
