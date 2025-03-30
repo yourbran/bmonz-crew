@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import styles from "@/styles/CrewCard.module.css";
 
-export default function CrewCard({ crew }: { crew: { id: number; name: string; role: string; image?: string } }) {
+export default function CrewCard({ crew }: { crew: { id: number; name: string; occupation: string; image?: string } }) {
   const defaultImage = "/default-avatar.png";
   const router = useRouter();
 
@@ -19,7 +19,7 @@ export default function CrewCard({ crew }: { crew: { id: number; name: string; r
     >
       <div className={styles.cardContent}>
         <h3>{crew.name}</h3>
-        <p>{crew.role}</p>
+        <p>{crew.occupation}</p>
       </div>
     </div>
   );

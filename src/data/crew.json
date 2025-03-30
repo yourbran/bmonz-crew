@@ -2,67 +2,135 @@
     {
       "id": 1,
       "name": "최필성",
-      "role": "테스트",
-      "bio": "Node.js와 PostgreSQL을 주로 다룹니다.",
-      "image": "",
       "occupation": "개발자",
-      "career": "12년",
+      "bio": "Node.js와 PostgreSQL을 주로 다룹니다.",
+      "image": "/pilseong_avatar.png",
+      "climbingStartDate": "201312",
       "highestGrade": "V9",
-      "profilePicture": "/default-avatar.png",
+      "profilePicture": "/pilseong_avatar.png",
       "climbingSkills": {
         "grip": 8,
         "balance": 7,
         "routeFinding": 9,
         "endurance": 7,
         "flexibility": 8
-      }
+      },
+      "climbingHistory": [
+      {
+          "route": "솔이와 나들이",
+          "grade": "V4",
+          "finishDate": "2025-03-30",
+          "link": "https://www.youtube.com/watch?v=example"
+      },
+      {
+        "route": "다이브",
+        "grade": "V4",
+        "finishDate": "2025-03-30",
+        "link": "https://www.youtube.com/watch?v=example"
+    },
+      {
+        "route": "Triple X Stand",
+        "grade": "V7",
+        "finishDate": "2025-03-15",
+        "link": "https://www.youtube.com/watch?v=example"
+      },
+      {
+        "route": "Small Giant",
+        "grade": "V9",
+        "finishDate": "2018-07-02",
+        "link": "https://www.youtube.com/watch?v=example"
+      },
+      {
+        "route": "바위늘보",
+        "grade": "V5",
+        "finishDate": "2018-05-01",
+        "link": "https://www.youtube.com/watch?v=example"
+      },
+      {
+        "route": "바위늘보",
+        "grade": "V5",
+        "finishDate": "2018-05-01",
+        "link": "https://www.youtube.com/watch?v=example"
+      } 
+    ]
     },
     {
       "id": 2,
       "name": "이민희",
-      "role": "공주님",
-      "bio": "Next.js와 React 기반 UI를 개발합니다.",
-      "image": "",
       "occupation": "소방관",
-      "career": "5년",
+      "bio": "Next.js와 React 기반 UI를 개발합니다.",
+      "image": "/minhee_avatar.png",
+      "climbingStartDate": "201908",
       "highestGrade": "V3",
-      "profilePicture": "/default-avatar.png",
+      "profilePicture": "/minhee_avatar.png",
       "climbingSkills": {
         "grip": 4,
         "balance": 6,
         "routeFinding": 3,
         "endurance": 5,
         "flexibility": 8
+      },
+      "climbingHistory": [
+      {
+          "route": "머쉬룸 플라워",
+          "grade": "V3",
+          "finishDate": "2025-03-15",
+          "link": "https://www.youtube.com/watch?v=example"
       }
+    ]
     },
     {
       "id": 3,
       "name": "오경환",
-      "role": "짜바리",
+      "occupation": "세터",
       "bio": "UX/UI 디자인과 CSS 작업을 합니다.",
-      "image": "",
-      "occupation": "Allez 매니저",
-      "career": "12년",
+      "image": "/kyunghwan_avatar.png",
+      "climbingStartDate": "201401",
       "highestGrade": "V10",
-      "profilePicture": "/default-avatar.png",
+      "profilePicture": "/kyunghwan_avatar.png",
       "climbingSkills": {
         "grip": 8,
         "balance": 9,
         "routeFinding": 8,
         "endurance": 7,
         "flexibility": 8
+      },
+      "climbingHistory": [
+      {
+          "route": "솔이와 나들이",
+          "grade": "V4",
+          "finishDate": "2025-03-30",
+          "link": "https://www.youtube.com/watch?v=example"
+      },
+      {
+        "route": "다이브",
+        "grade": "V4",
+        "finishDate": "2025-03-30",
+        "link": "https://www.youtube.com/watch?v=example"
+    },
+      {
+        "route": "Triple X",
+        "grade": "V7",
+        "finishDate": "2025-03-15",
+        "link": "https://www.youtube.com/watch?v=example"
+      },
+      {
+        "route": "Small Giant",
+        "grade": "V9",
+        "finishDate": "2025-03-15",
+        "link": "https://www.youtube.com/watch?v=example"
       }
+    ]
     },
     {
       "id": 4,
       "name": "조영준",
-      "role": "찌바리",
-      "bio": "UX/UI 디자인과 CSS 작업을 합니다.",
-      "image": "",
       "occupation": "회사원",
-      "career": "5년",
+      "bio": "UX/UI 디자인과 CSS 작업을 합니다.",
+      "image": "/youngjoon_avatar.png",
+      "climbingStartDate": "201912",
       "highestGrade": "V7",
-      "profilePicture": "/default-avatar.png",
+      "profilePicture": "/youngjoon_avatar.png",
       "climbingSkills": {
         "grip": 7,
         "balance": 8,

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import styles from "@/styles/CrewDetail.module.css";
 import FiveSidedPolygon from "@/components/FiveSidedPolygon";
+import GradeBadge from "@/components/GradeBadge";
 
 // 타입 정의
 interface Skills {
@@ -17,6 +18,13 @@ interface Skills {
   flexibility: number;
 }
 
+interface HistoryEntry {
+  route: string;
+  grade: string;
+  finishDate: string;
+  link?: string;
+}
+
 interface CrewMember {
   id: number;
   name: string;
@@ -24,13 +32,27 @@ interface CrewMember {
   bio: string;
   image: string;
   occupation: string;
-  career: string;
+  climbingStartDate: string;
   highestGrade: string;
   profilePicture: string;
   climbingSkills: Skills;
+  climbingHistory?: HistoryEntry[]; // 새로 추가된 등반 이력
 }
 
 const crewData = crewDataRaw as CrewMember[];
+
+function calculateCareer(start: string): string {
+  const startYear = parseInt(start.substring(0, 4));
+  const startMonth = parseInt(start.substring(4, 6));
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1; // 0부터 시작하므로 +1
+  let monthsDiff = (currentYear - startYear) * 12 + (currentMonth - startMonth);
+  if (monthsDiff < 0) monthsDiff = 0;
+  const years = Math.floor(monthsDiff / 12);
+  const months = monthsDiff % 12;
+  return months > 0 ? `${years}년 ${months}개월` : `${years}년`;
+}
 
 export default function CrewDetail() {
 
@@ -51,6 +73,9 @@ export default function CrewDetail() {
 
   const crew = crewData.find((c) => c.id.toString() === id) || null;
   if (!crew) return <p style={{ textAlign: "center" }}>크루원을 찾을 수 없습니다.</p>;
+
+   // climbingStartDate를 바탕으로 경력을 계산
+   const careerText = calculateCareer(crew.climbingStartDate);
 
   return (
     <div className={styles.pageContainer}>
@@ -86,11 +111,13 @@ export default function CrewDetail() {
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>클라이밍 경력</span>
-                <span className={styles.infoValue}>{crew.career}</span>
+                <span className={styles.infoValue}>{careerText}</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>최고 그레이드</span>
-                <span className={styles.infoValue}>{crew.highestGrade}</span>
+                <span className={styles.infoValue}>
+                  <GradeBadge grade={crew.highestGrade} />
+                </span>
               </div>
             </div>
           </div>
@@ -103,6 +130,63 @@ export default function CrewDetail() {
             <FiveSidedPolygon skills={crew.climbingSkills} />
           </div>
         </div>
+
+        {/* 등반 이력 섹션 */}
+        {crew.climbingHistory && crew.climbingHistory.length > 0 && (
+          <div className={styles.section}>
+            <h2>등반 이력</h2>
+            <div className={styles.climbingHistory}>
+              <table className={styles.historyTable}>
+                <tbody>
+                  {crew.climbingHistory.slice(0, 4).map((entry, index) => (
+                    <tr key={index}>
+                      <td>{entry.route}</td>
+                      <td>
+                        <GradeBadge grade={entry.grade} />
+                      </td>
+                      <td>
+  <div className={styles.linkContainer}>
+    <span className={styles.finishDateText}>{entry.finishDate}</span>
+    {entry.link && (
+      <>
+        {entry.link.includes("instagram") && (
+          <a
+            href={entry.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.iconLink}
+          >
+            <span className={styles.iconPlaceholder}>[IG Icon]</span>
+          </a>
+        )}
+        {entry.link.includes("youtube") && (
+          <a
+            href={entry.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.iconLink}
+          >
+            <span className={styles.iconPlaceholder}>[YT Icon]</span>
+          </a>
+        )}
+      </>
+    )}
+  </div>
+</td>
+                    </tr>
+                  ))}
+                  {crew.climbingHistory.length > 4 && (
+                    <tr>
+                      <td colSpan={3} className={styles.truncatedRow}>
+                        ...
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </motion.div>
     </div>
   );
