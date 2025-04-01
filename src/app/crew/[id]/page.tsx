@@ -103,8 +103,12 @@ export default function CrewDetail() {
         {/* 인물 기본정보 섹션 */}
         <div className={styles.section}>
           <div className={styles.basicInfo}>
-            <h1>{crew.name}</h1>
+            <h2>멤버소개</h2>
             <div className={styles.infoList}>
+              <div className={styles.infoItem}>
+                <span className={styles.infoLabel}>이름</span>
+                <span className={styles.infoValue}>{crew.name}</span>
+              </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>직업</span>
                 <span className={styles.infoValue}>{crew.occupation}</span>
