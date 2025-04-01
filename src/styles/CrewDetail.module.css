@@ -40,8 +40,8 @@
 .basicInfo {
   max-width: 600px;    /* 전체 영역 너비를 제한 */
   width: 100%;
-  margin: 40px auto 0 auto;  /* 상단에 20px 마진 추가, 중앙 정렬 */
-  padding: 0 30px;
+  margin: 40px auto 0 auto;  /* 상단에 40px 마진 추가, 중앙 정렬 */
+  padding: 0 40px;
 }
 
 /* 기본정보 영역 관련 스타일 */
