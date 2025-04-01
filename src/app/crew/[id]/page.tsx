@@ -144,40 +144,48 @@ export default function CrewDetail() {
                       <td>
                         <GradeBadge grade={entry.grade} />
                       </td>
+                      <td>{entry.finishDate}</td>
                       <td>
-  <div className={styles.linkContainer}>
-    <span className={styles.finishDateText}>{entry.finishDate}</span>
-    {entry.link && (
-      <>
-        {entry.link.includes("instagram") && (
-          <a
-            href={entry.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.iconLink}
-          >
-            <span className={styles.iconPlaceholder}>[IG Icon]</span>
-          </a>
-        )}
-        {entry.link.includes("youtube") && (
-          <a
-            href={entry.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.iconLink}
-          >
-            <span className={styles.iconPlaceholder}>[YT Icon]</span>
-          </a>
-        )}
-      </>
-    )}
-  </div>
-</td>
+                        {entry.link && (
+                          <>
+                            {entry.link.includes("instagram") && (
+                              <a
+                                href={entry.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.iconLink}
+                              >
+                                <Image 
+                                  src="/instagram_icon.png"
+                                  alt="Instagram"
+                                  width={16}
+                                  height={16}
+                                />
+                              </a>
+                            )}
+                            {entry.link.includes("youtube") && (
+                              <a
+                                href={entry.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.iconLink}
+                              >
+                                 <Image 
+                                  src="/youtube_icon.png"
+                                  alt="Youtube"
+                                  width={16}
+                                  height={16}
+                                />
+                              </a>
+                            )}
+                          </>
+                        )}
+                      </td>
                     </tr>
                   ))}
                   {crew.climbingHistory.length > 4 && (
                     <tr>
-                      <td colSpan={3} className={styles.truncatedRow}>
+                      <td colSpan={4} className={styles.truncatedRow}>
                         ...
                       </td>
                     </tr>
