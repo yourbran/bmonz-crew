@@ -102,8 +102,8 @@ export default function CrewDetail() {
 
         {/* 인물 기본정보 섹션 */}
         <div className={styles.section}>
+          <h2>멤버소개</h2>
           <div className={styles.basicInfo}>
-            <h2>멤버소개</h2>
             <div className={styles.infoList}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>이름</span>
@@ -129,8 +129,8 @@ export default function CrewDetail() {
 
         {/* 클라이밍 능력 섹션 */}
         <div className={styles.section}>
+        <h2>퍼포먼스</h2>
           <div className={styles.climbingSkills}>
-            <h2>퍼포먼스</h2>
             <FiveSidedPolygon skills={crew.climbingSkills} />
           </div>
         </div>

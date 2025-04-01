@@ -38,68 +38,54 @@
 }
 
 .basicInfo {
-  text-align: center;
-}
-
-.basicInfo h1 {
-  margin-bottom: 16px;
-  font-size: 1.5rem;
+  max-width: 600px;    /* 전체 영역 너비를 제한 */
+  width: 100%;
+  margin: 40px auto 0 auto;  /* 상단에 20px 마진 추가, 중앙 정렬 */
+  padding: 0 30px;
 }
 
 /* 기본정보 영역 관련 스타일 */
 .infoList {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* 왼쪽 정렬 */
-  gap: 8px;
-  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 170px 1fr; /* 좌측 열: 고정 120px, 우측 열: 남은 공간 */
+  gap: 24px 12px;
+  margin: 0 auto;    /* 그리드 자체도 중앙 정렬 */
+  width: 100%;
 }
 
 .infoItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 8px 0;
-  /* border-bottom 제거 */
+  display: contents;
 }
 
 .infoLabel {
+  text-align: left;
   font-weight: bold;
   color: #333;
-  width: 120px; /* 레이블 영역 고정 폭 */
-  text-align: left;
 }
 
 .infoValue {
-  color: #555;
   text-align: left;
-  flex: 1;
+  color: #555;
 }
 
 .climbingSkills {
   width: 100%;
   max-width: 400px;
   text-align: center;
-}
-
-.climbingSkills h2 {
-  margin-bottom: 12px;
-  font-size: 1.5rem;
+  margin: 20px auto 0 auto;  /* 상단에 20px 마진 추가, 중앙 정렬 */
 }
 
 .climbingHistory {
   margin: 0 auto;
   max-width: 400px;
   text-align: left;
+  margin: 20px auto 0 auto;  /* 상단에 20px 마진 추가, 중앙 정렬 */
 }
 
 .historyTable {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 12px;
-  margin-top: 10px;
 }
 
 .historyTable td {
