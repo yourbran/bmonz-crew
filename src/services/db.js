@@ -24,6 +24,6 @@ async function testConnection() {
 }
 
 // 테스트 실행 (필요시)
-testConnection();
+// testConnection();
 
 module.exports = pool;

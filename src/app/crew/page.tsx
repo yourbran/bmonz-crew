@@ -1,9 +1,8 @@
-"use client";
-
 import CrewList from "@/components/CrewList";
 import styles from "../../styles/Crew.module.css";
 
 export default function CrewPage() {
+  console.log("crew page");
   return (
     <main>
       <div className={styles.pageContainer}>
