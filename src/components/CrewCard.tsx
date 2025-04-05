@@ -1,25 +1,25 @@
-"use client"; // 클라이언트 컴포넌트 선언
+"use client";
 
 import { useRouter } from "next/navigation";
 import styles from "@/styles/CrewCard.module.css";
 
-export default function CrewCard({ crew }: { crew: { id: number; name: string; occupation: string; image?: string } }) {
+export default function CrewCard({ crew }: { crew: { crew_id: number; crew_nm: string; job_nm: string; prof_img?: string } }) {
   const defaultImage = "/default-avatar.png";
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/crew/${crew.id}`);
+    router.push(`/crew/${crew.crew_id}`);
   };
 
   return (
     <div
       className={styles.cardContainer}
       onClick={handleClick}
-      style={{ backgroundImage: `url(${crew.image || defaultImage})` }} // 카드 전체를 이미지로 채우기
+      style={{ backgroundImage: `url(${crew.prof_img || defaultImage})` }} // 카드 전체를 이미지로 채우기
     >
       <div className={styles.cardContent}>
-        <h3>{crew.name}</h3>
-        <p>{crew.occupation}</p>
+        <h3>{crew.crew_nm}</h3>
+        <p>{crew.job_nm}</p>
       </div>
     </div>
   );
