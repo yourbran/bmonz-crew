@@ -32,14 +32,14 @@ interface History {
 
 async function getCrewDetail(id: string) {
   try {
-    const crewRes = await pool.query('SELECT crew_id, crew_nm, job_nm, img_url, clmb_st_dt, prof_img FROM bmonz_crew WHERE crew_id = $1', [id]);
+    const crewRes = await pool.query('SELECT crew_id, crew_nm, job_nm, img_url, to_char(clmb_st_dt, \'YYYY-MM-DD\') AS clmb_st_dt, prof_img FROM bmonz_crew WHERE crew_id = $1', [id]);
     if (crewRes.rowCount === 0) return null;
     const crew: Crew = crewRes.rows[0];
 
     const skillsRes = await pool.query('SELECT crew_id, skill_id, grip_nm, score FROM bmonz_clmb_skls WHERE crew_id = $1 ORDER BY skill_id', [id]);
     const skills: Skill[] = skillsRes.rows;
 
-    const historyRes = await pool.query('SELECT crew_id, history_id, route, grade, finish_date, link_type, link_url FROM bmonz_clmb_hist WHERE crew_id = $1 ORDER BY history_id', [id]);
+    const historyRes = await pool.query('SELECT crew_id, history_id, route, grade, to_char(finish_date, \'YYYY-MM-DD\') AS finish_date, link_type, link_url FROM bmonz_clmb_hist WHERE crew_id = $1 ORDER BY history_id', [id]);
     const history: History[] = historyRes.rows;
 
     // 직렬화를 통해 Date나 다른 non-serializable 값을 순수 객체로 변환
@@ -68,7 +68,7 @@ export default async function CrewDetailPage({ params }: { params: { id: string 
   console.log('Fetched crew data:', crew),
   console.log('Fetched crew data:', skills),
   console.log('Fetched crew data:', history)
-  
+
   return (
     // CrewDetailContent는 클라이언트 컴포넌트로, 인터랙션 등이 필요하면 여기에 구현
     <CrewDetailContent crew={crew} skills={skills} history={history} />
