@@ -55,7 +55,7 @@ async function getCrewDetail(id: string) {
   }
 }
 
-export default async function CrewDetailPage({ params }: { params: { id: string } }) {
+export default async function CrewDetailPage({ params }: { params: Promise<{ id: string }> }) {
   
   const resolvedParams = await params;
   const data = await getCrewDetail(resolvedParams.id);
