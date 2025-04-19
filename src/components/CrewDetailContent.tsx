@@ -1,10 +1,9 @@
 'use client';
 
-import React from 'react';
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useParams, usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import styles from "@/styles/CrewDetail.module.css";
 import GradeBadge from "@/components/GradeBadge";
 import FiveSidedPolygon from "@/components/FiveSidedPolygon";
@@ -101,6 +100,18 @@ export default function CrewDetailContent({ crew, skills, history }: CrewDetailC
     // DB로부터 받아온 skills 배열을 FiveSidedPolygon이 요구하는 객체 형식으로 변환
     const convertedSkills = convertSkills(skills);
 
+    // 최고 그레이드 계산
+    const highestGrade = useMemo(() => {
+        if (!history?.length) return "";
+        // 숫자로 파싱하고 NaN인 항목은 걸러냅니다.
+        const gradeNums = history
+            .map(h => parseInt(h.grade, 10))
+            .filter(n => !isNaN(n));
+        if (gradeNums.length === 0) return "";
+        const max = Math.max(...gradeNums);
+        return `${max}`;
+    }, [history]);
+
   
     return (
       <div className={styles.pageContainer}>
@@ -145,7 +156,10 @@ export default function CrewDetailContent({ crew, skills, history }: CrewDetailC
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>최고 그레이드</span>
                   <span className={styles.infoValue}>
-                    {/* <GradeBadge grade={crew.highestGrade} /> */}
+                    {highestGrade
+                        ? <GradeBadge grade={highestGrade} />
+                        : <span>정보 없음</span> /* 필요시 대체 문구 */
+                    }
                   </span>
                 </div>
               </div>

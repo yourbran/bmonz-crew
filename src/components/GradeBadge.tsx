@@ -4,38 +4,46 @@ import React from "react";
 import styles from "@/styles/GradeBadge.module.css";
 
 interface GradeBadgeProps {
+  // 이제 grade에는 "9", "10" 같은 숫자 문자열만 넘어옵니다.
   grade: string;
 }
 
 export default function GradeBadge({ grade }: GradeBadgeProps) {
-  const normalized = grade.toUpperCase();
+  // 숫자만 파싱
+  const num = parseInt(grade, 10);
+  // 화면에 붙일 실제 문자열
+  const display = `V${num}`;
+
   let bgColor = "";
   let textColor = "#fff";
   let border = "none";
 
-  if (normalized === "VB" || normalized === "V1" || normalized === "V2") {
-    bgColor = "#28a745"; // 초록색
-  } else if (normalized === "V3") {
-    bgColor = "#87ceeb"; // 하늘색
+  if (num <= 2) {
+    // V1, V2 그룹 (VB는 더 이상 사용하지 않으므로 1,2 이하를 초록으로 처리)
+    bgColor = "#28a745";
+  } else if (num === 3) {
+    // V3
+    bgColor = "#87ceeb";
     textColor = "#000";
-  } else if (normalized === "V4") {
-    bgColor = "#000080"; // 남색
-  } else if (normalized === "V5") {
-    bgColor = "#800080"; // 보라색
-  } else if (normalized.startsWith("V")) {
-    const num = parseInt(normalized.substring(1));
-    if (num >= 6 && num <= 9) {
-      bgColor = "#f0f0f0"; // 연한 회색 배경
-      textColor = "#000"; // 검정 텍스트
-      border = "1px solid #ccc"; // 약한 회색 테두리
-    } else if (num >= 10) {
-      bgColor = "#000"; // 검정색
-      textColor = "#fff";
-    } else {
-      bgColor = "#ccc";
-    }
+  } else if (num === 4) {
+    // V4
+    bgColor = "#000080";
+  } else if (num === 5) {
+    // V5
+    bgColor = "#800080";
+  } else if (num >= 6 && num <= 9) {
+    // V6~V9
+    bgColor = "#f0f0f0";
+    textColor = "#000";
+    border = "1px solid #ccc";
+  } else if (num >= 10) {
+    // V10 이상
+    bgColor = "#000";
+    textColor = "#fff";
   } else {
+    // 파싱 실패 등 예외
     bgColor = "#ccc";
+    textColor = "#000";
   }
 
   return (
@@ -44,10 +52,10 @@ export default function GradeBadge({ grade }: GradeBadgeProps) {
       style={{
         backgroundColor: bgColor,
         color: textColor,
-        border: border,
+        border,
       }}
     >
-      {grade}
+      {display}
     </span>
   );
 }
