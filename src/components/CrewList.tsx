@@ -11,7 +11,7 @@ interface CrewListProps {
 export default function CrewList({ crewData }: CrewListProps) {
   return (
     <div className={styles.cardGrid}>
-      {crewData.map((crew: any) => (
+      {crewData.map((crew) => (
         <CrewCard key={crew.crew_id} crew={crew} />
       ))}
     </div>

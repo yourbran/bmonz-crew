@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useMemo } from "react";
 import styles from "@/styles/CrewDetail.module.css";
 import GradeBadge from "@/components/GradeBadge";
