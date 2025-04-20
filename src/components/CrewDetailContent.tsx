@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import styles from "@/styles/CrewDetail.module.css";
 import GradeBadge from "@/components/GradeBadge";
 import FiveSidedPolygon from "@/components/FiveSidedPolygon";
