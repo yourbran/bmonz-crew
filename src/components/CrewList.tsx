@@ -15,5 +15,5 @@ export default function CrewList({ crewData }: CrewListProps) {
         <CrewCard key={crew.crew_id} crew={crew} />
       ))}
     </div>
-  );
+  )
 }

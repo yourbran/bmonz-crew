@@ -14,7 +14,7 @@ export default async function CrewPage() {
       <main>
         <div className={styles.pageContainer}>
           <h2 className={styles.title}>멤버소개</h2>
-          <CrewList crewData={crewData} />;
+          <CrewList crewData={crewData} />
         </div>
       </main>
     ) 
