@@ -82,17 +82,6 @@ function convertSkills(skillsArray: Skill[]): {
 export default function CrewDetailContent({ crew, skills, history }: CrewDetailContentProps) {
     const pathName = usePathname();
   
-    // 더미 상태를 추가해서 강제로 리렌더링 유도
-    const [dummy, setDummy] = useState(0);
-  
-    useEffect(() => {
-      // 컴포넌트가 마운트될 때 짧은 딜레이 후 dummy state 업데이트
-      const timeout = setTimeout(() => {
-        setDummy((prev) => prev + 1);
-      }, 100); // 100ms 정도
-      return () => clearTimeout(timeout);
-    }, []);
-  
     // climbingStartDate를 바탕으로 경력을 계산
     const careerText = calculateCareer(crew.clmb_st_dt);
 
@@ -115,7 +104,7 @@ export default function CrewDetailContent({ crew, skills, history }: CrewDetailC
     return (
       <div className={styles.pageContainer}>
         <motion.div
-          key={`${pathName}-${dummy}`} // '뒤로가기'를 통해 해당 페이지로 되돌아올 경우 정상적으로 렌더링 되도록 설정
+          key={`${pathName}`} // '뒤로가기'를 통해 해당 페이지로 되돌아올 경우 정상적으로 렌더링 되도록 설정
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
