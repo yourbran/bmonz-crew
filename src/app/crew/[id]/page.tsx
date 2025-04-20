@@ -65,10 +65,6 @@ export default async function CrewDetailPage({ params }: { params: Promise<{ id:
   
   const { crew, skills, history } = data;
 
-  console.log('Fetched crew data:', crew),
-  console.log('Fetched crew data:', skills),
-  console.log('Fetched crew data:', history)
-
   return (
     // CrewDetailContent는 클라이언트 컴포넌트로, 인터랙션 등이 필요하면 여기에 구현
     <CrewDetailContent crew={crew} skills={skills} history={history} />

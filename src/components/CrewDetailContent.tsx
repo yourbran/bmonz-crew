@@ -81,7 +81,6 @@ function convertSkills(skillsArray: Skill[]): {
 
 export default function CrewDetailContent({ crew, skills, history }: CrewDetailContentProps) {
     const pathName = usePathname();
-    const params = useParams();
   
     // 더미 상태를 추가해서 강제로 리렌더링 유도
     const [dummy, setDummy] = useState(0);
