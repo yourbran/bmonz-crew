@@ -7,7 +7,7 @@ import rehypeRaw from 'rehype-raw';
 import MdxContent from '@/components/MdxContent';
 
 interface StoryPageProps {
-  params: { id: string } | Promise<{ id: string }>;
+  params: Promise<{ id: string }>;
 }
 
 export default async function StoryPage({ params }: StoryPageProps) {
