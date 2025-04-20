@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import CrewList from "@/components/CrewList";
 import styles from "../../styles/Crew.module.css";
 import pool from '@/services/db';
@@ -21,6 +23,6 @@ export default async function CrewPage() {
         
   } catch (error) {
     console.error('크루 데이터 조회 에러:', error);
-    return <div>데이터를 불러오는 중 오류가 발생했습니다.</div>;
+    throw error;
   }
 }

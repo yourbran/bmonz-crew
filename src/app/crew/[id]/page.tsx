@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import pool from "@/services/db";
 import CrewDetailContent from "@/components/CrewDetailContent";
 
-// 타입 정의 (필요에 따라 수정)
 interface Crew {
   crew_id: number;
   crew_nm: string;
