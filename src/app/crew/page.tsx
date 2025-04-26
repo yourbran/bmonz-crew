@@ -1,9 +1,11 @@
 export const dynamic = 'force-dynamic'
 
 import CrewList from "@/components/CrewList";
-import styles from "../../styles/Crew.module.css";
 import pool from '@/services/db';
 import { Crew } from "@/types/crew";
+import styles from "@/styles/Crew.module.css";
+import crewListStyles from "@/styles/CrewList.module.css";
+import crewCardstyles from "@/styles/CrewCard.module.css";
 
 export default async function CrewPage() {
   try {
@@ -16,7 +18,11 @@ export default async function CrewPage() {
       <main>
         <div className={styles.pageContainer}>
           <h2 className={styles.title}>멤버소개</h2>
-          <CrewList crewData={crewData} />
+          <CrewList 
+            crewData={crewData}
+            crewListStyles={crewListStyles}
+            crewCardStyles={crewCardstyles}
+          />
         </div>
       </main>
     ) 
