@@ -3,9 +3,12 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import styles from "@/styles/Navbar.module.css";
 
-export default function Navbar() {
+type NavbarProps = {
+  styles: Record<string, string>;
+};
+
+export default function Navbar({ styles }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 

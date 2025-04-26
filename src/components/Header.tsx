@@ -2,21 +2,19 @@
 
 import Link from "next/link";
 import Navbar from './Navbar';
-import styles from '../styles/Header.module.css';
 
-const Header = () => {
-  
+type HeaderProps = {
+  headerStyles: Record<string, string>;
+  navbarStyles: Record<string, string>;
+};
 
+export default function Header({ headerStyles, navbarStyles, }: HeaderProps) {
   return (
-    <header className={styles.header}>
-      <Link href="/" className={styles.logoText}>
-        볼더몬스터
-      </Link>
-      <div className={styles.navbarContainer}>
-        <Navbar />
+    <header className={headerStyles.header}>
+      <Link href="/" className={headerStyles.logoText}>볼더몬스터</Link>
+      <div className={headerStyles.navbarContainer}>
+        <Navbar styles={navbarStyles} />
       </div>
     </header>
   );
 };
-
-export default Header;
