@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
-import styles from "@/styles/CrewDetail.module.css";
 import GradeBadge from "@/components/GradeBadge";
 import FiveSidedPolygon from "@/components/FiveSidedPolygon";
 
@@ -40,6 +39,7 @@ interface CrewDetailContentProps {
   history: History[];
   polygonStyles: Record<string,string>;
   gradeStyles: Record<string,string>;
+  crewDetailStyles: Record<string,string>;
 }
 
 function calculateCareer(start: string): string {
@@ -81,7 +81,7 @@ function convertSkills(skillsArray: Skill[]): {
     return converted;
   }
 
-export default function CrewDetailContent({ crew, skills, history, polygonStyles, gradeStyles, }: CrewDetailContentProps) {
+export default function CrewDetailContent({ crew, skills, history, polygonStyles, gradeStyles, crewDetailStyles, }: CrewDetailContentProps) {
     const pathName = usePathname();
   
     // climbingStartDate를 바탕으로 경력을 계산
@@ -104,7 +104,7 @@ export default function CrewDetailContent({ crew, skills, history, polygonStyles
 
   
     return (
-      <div className={styles.pageContainer}>
+      <div className={crewDetailStyles.pageContainer}>
         <motion.div
           key={`${pathName}`} // '뒤로가기'를 통해 해당 페이지로 되돌아올 경우 정상적으로 렌더링 되도록 설정
           initial={{ opacity: 0, x: 50 }}
@@ -114,38 +114,38 @@ export default function CrewDetailContent({ crew, skills, history, polygonStyles
           style={{ textAlign: "center", padding: "20px" }}
         >
           {/* 프로필 사진 섹션 */}
-          <div className={styles.section}>
-            <div className={styles.profilePicture}>
+          <div className={crewDetailStyles.section}>
+            <div className={crewDetailStyles.profilePicture}>
               <Image 
                 src={crew.prof_img} 
                 alt={crew.crew_nm} 
                 width={200} 
                 height={200} 
-                className={styles.profileImg}
+                className={crewDetailStyles.profileImg}
               />
             </div>
           </div>
   
           {/* 인물 기본정보 섹션 */}
-          <div className={styles.section}>
+          <div className={crewDetailStyles.section}>
             <h2>멤버소개</h2>
-            <div className={styles.basicInfo}>
-              <div className={styles.infoList}>
-                <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>이름</span>
-                  <span className={styles.infoValue}>{crew.crew_nm}</span>
+            <div className={crewDetailStyles.basicInfo}>
+              <div className={crewDetailStyles.infoList}>
+                <div className={crewDetailStyles.infoItem}>
+                  <span className={crewDetailStyles.infoLabel}>이름</span>
+                  <span className={crewDetailStyles.infoValue}>{crew.crew_nm}</span>
                 </div>
-                <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>직업</span>
-                  <span className={styles.infoValue}>{crew.job_nm}</span>
+                <div className={crewDetailStyles.infoItem}>
+                  <span className={crewDetailStyles.infoLabel}>직업</span>
+                  <span className={crewDetailStyles.infoValue}>{crew.job_nm}</span>
                 </div>
-                <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>클라이밍 경력</span>
-                  <span className={styles.infoValue}>{careerText}</span>
+                <div className={crewDetailStyles.infoItem}>
+                  <span className={crewDetailStyles.infoLabel}>클라이밍 경력</span>
+                  <span className={crewDetailStyles.infoValue}>{careerText}</span>
                 </div>
-                <div className={styles.infoItem}>
-                  <span className={styles.infoLabel}>최고 그레이드</span>
-                  <span className={styles.infoValue}>
+                <div className={crewDetailStyles.infoItem}>
+                  <span className={crewDetailStyles.infoLabel}>최고 그레이드</span>
+                  <span className={crewDetailStyles.infoValue}>
                     {highestGrade
                         ? <GradeBadge grade={highestGrade} styles={gradeStyles}/>
                         : <span>정보 없음</span> /* 필요시 대체 문구 */
@@ -157,19 +157,19 @@ export default function CrewDetailContent({ crew, skills, history, polygonStyles
           </div>
   
           {/* 클라이밍 능력 섹션 */}
-          <div className={styles.section}>
+          <div className={crewDetailStyles.section}>
           <h2>퍼포먼스</h2>
-            <div className={styles.climbingSkills}>
+            <div className={crewDetailStyles.climbingSkills}>
               <FiveSidedPolygon skills={convertedSkills} styles={polygonStyles} />
             </div>
           </div>
   
           {/* 등반 이력 섹션 */}
           {history && history.length > 0 && (
-            <div className={styles.section}>
+            <div className={crewDetailStyles.section}>
               <h2>등반 이력</h2>
-              <div className={styles.climbingHistory}>
-                <table className={styles.historyTable}>
+              <div className={crewDetailStyles.climbingHistory}>
+                <table className={crewDetailStyles.historyTable}>
                   <tbody>
                     {history.slice(0, 4).map((entry, index) => (
                       <tr key={index}>
@@ -184,7 +184,7 @@ export default function CrewDetailContent({ crew, skills, history, polygonStyles
                             href={entry.link_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.iconLink}
+                            className={crewDetailStyles.iconLink}
                             >
                             <Image 
                                 src="/instagram_icon.png"
@@ -199,7 +199,7 @@ export default function CrewDetailContent({ crew, skills, history, polygonStyles
                             href={entry.link_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.iconLink}
+                            className={crewDetailStyles.iconLink}
                             >
                             <Image 
                                 src="/youtube_icon.png"
@@ -214,7 +214,7 @@ export default function CrewDetailContent({ crew, skills, history, polygonStyles
                     ))}
                     {history.length > 4 && (
                       <tr>
-                        <td colSpan={4} className={styles.truncatedRow}>
+                        <td colSpan={4} className={crewDetailStyles.truncatedRow}>
                           ...
                         </td>
                       </tr>

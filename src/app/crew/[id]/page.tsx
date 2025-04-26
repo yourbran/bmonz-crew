@@ -3,6 +3,7 @@ import pool from "@/services/db";
 import CrewDetailContent from "@/components/CrewDetailContent";
 import polygonStyles from "@/styles/Polygon.module.css";
 import gradeStyles from "@/styles/GradeBadge.module.css";
+import crewDetailStyles from "@/styles/CrewDetail.module.css";
 
 interface Crew {
   crew_id: number;
@@ -67,6 +68,6 @@ export default async function CrewDetailPage({ params }: { params: Promise<{ id:
 
   return (
     // CrewDetailContent는 클라이언트 컴포넌트로, 인터랙션 등이 필요하면 여기에 구현
-    <CrewDetailContent crew={crew} skills={skills} history={history} polygonStyles={polygonStyles} gradeStyles={gradeStyles} />
+    <CrewDetailContent crew={crew} skills={skills} history={history} polygonStyles={polygonStyles} gradeStyles={gradeStyles} crewDetailStyles={crewDetailStyles} />
   );
 }
