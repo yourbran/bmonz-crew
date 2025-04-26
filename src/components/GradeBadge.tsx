@@ -1,17 +1,15 @@
 "use client";
 
 import React from "react";
-import styles from "@/styles/GradeBadge.module.css";
 
 interface GradeBadgeProps {
-  // 이제 grade에는 "9", "10" 같은 숫자 문자열만 넘어옵니다.
   grade: string;
+  styles:Record<string,string>;
 }
 
-export default function GradeBadge({ grade }: GradeBadgeProps) {
-  // 숫자만 파싱
+export default function GradeBadge({ grade, styles }: GradeBadgeProps) {
+  
   const num = parseInt(grade, 10);
-  // 화면에 붙일 실제 문자열
   const display = `V${num}`;
 
   let bgColor = "";

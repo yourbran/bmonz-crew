@@ -38,6 +38,8 @@ interface CrewDetailContentProps {
   crew: Crew;
   skills: Skill[];
   history: History[];
+  polygonStyles: Record<string,string>;
+  gradeStyles: Record<string,string>;
 }
 
 function calculateCareer(start: string): string {
@@ -79,7 +81,7 @@ function convertSkills(skillsArray: Skill[]): {
     return converted;
   }
 
-export default function CrewDetailContent({ crew, skills, history }: CrewDetailContentProps) {
+export default function CrewDetailContent({ crew, skills, history, polygonStyles, gradeStyles, }: CrewDetailContentProps) {
     const pathName = usePathname();
   
     // climbingStartDate를 바탕으로 경력을 계산
@@ -145,7 +147,7 @@ export default function CrewDetailContent({ crew, skills, history }: CrewDetailC
                   <span className={styles.infoLabel}>최고 그레이드</span>
                   <span className={styles.infoValue}>
                     {highestGrade
-                        ? <GradeBadge grade={highestGrade} />
+                        ? <GradeBadge grade={highestGrade} styles={gradeStyles}/>
                         : <span>정보 없음</span> /* 필요시 대체 문구 */
                     }
                   </span>
@@ -158,7 +160,7 @@ export default function CrewDetailContent({ crew, skills, history }: CrewDetailC
           <div className={styles.section}>
           <h2>퍼포먼스</h2>
             <div className={styles.climbingSkills}>
-              <FiveSidedPolygon skills={convertedSkills} />
+              <FiveSidedPolygon skills={convertedSkills} styles={polygonStyles} />
             </div>
           </div>
   
@@ -173,7 +175,7 @@ export default function CrewDetailContent({ crew, skills, history }: CrewDetailC
                       <tr key={index}>
                         <td>{entry.route}</td>
                         <td>
-                          <GradeBadge grade={entry.grade} />
+                          <GradeBadge grade={entry.grade} styles={gradeStyles} />
                         </td>
                         <td>{entry.finish_date}</td>
                         <td>

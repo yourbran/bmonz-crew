@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, useRef } from "react";
-import styles from "@/styles/Polygon.module.css";
+
+type FiveSidedPolygonProps = {
+  skills: { grip:number; balance:number; routeFinding:number; endurance:number; flexibility:number };
+  styles: Record<string,string>;  // ← prop 으로 전체 모듈 받기
+};
 
 interface Skills {
   grip: number;
@@ -17,7 +21,7 @@ interface TooltipData {
   y: number;
 }
 
-export default function FiveSidedPolygon({ skills }: { skills: Skills }) {
+export default function FiveSidedPolygon({ skills, styles, }: FiveSidedPolygonProps) {
   const maxRadius = 60; // 10점 만점일 때의 최대 길이
   const extraMargin = 30; // 기준 원 및 기본 여백
   const labelExtra = 10;  // 레이블이 잘리지 않도록 추가 여백
