@@ -1,12 +1,14 @@
 import StoryList from "@/components/StoryList";
-import styles from "../../styles/Story.module.css";
+import storyPageStyles from "@/styles/Story.module.css";
+import storyListStyles from "@/styles/StoryList.module.css";
+import storyCardStyles from "@/styles/StoryCard.module.css";
 
 export default function StoryPage() {
     return (
         <main>
-            <div className={styles.pageContainer}>
-                <h2 className={styles.title}>이야기</h2>
-                <StoryList />
+            <div className={storyPageStyles.pageContainer}>
+                <h2 className={storyPageStyles.title}>이야기</h2>
+                <StoryList styles={storyListStyles} cardStyles={storyCardStyles}/>
             </div>
         </main>
     );

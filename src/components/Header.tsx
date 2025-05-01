@@ -11,7 +11,7 @@ type HeaderProps = {
 export default function Header({ headerStyles, navbarStyles, }: HeaderProps) {
   return (
     <header className={headerStyles.header}>
-      <Link href="/" className={headerStyles.logoText}>볼더몬스터</Link>
+      <Link href="/" className={headerStyles.logoText} prefetch={false}>볼더몬스터</Link>
       <div className={headerStyles.navbarContainer}>
         <Navbar styles={navbarStyles} />
       </div>

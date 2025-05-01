@@ -16,8 +16,8 @@ export default function Home() {
       />
 
       <div className={styles.hashTags}>
-        <Link href="/crew"><span>#멤버소개</span></Link>
-        <Link href="/story"><span>#이야기</span></Link>
+        <Link href="/crew" prefetch={false}><span>#멤버소개</span></Link>
+        <Link href="/story" prefetch={false}><span>#이야기</span></Link>
       </div>
     </main>
   );

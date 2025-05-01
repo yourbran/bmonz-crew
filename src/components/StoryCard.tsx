@@ -1,9 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import styles from "@/styles/StoryCard.module.css";
 
-export default function StoryCard({ story }: {story: {id: number, image: string}} ) {
+type StoryCardProps = {
+  story: { id: number; image: string };
+  styles: Record<string,string>;
+};
+
+export default function StoryCard( { story, styles, }: StoryCardProps ) {
   const router = useRouter();
 
   const handleClick = () => {

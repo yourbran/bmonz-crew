@@ -50,12 +50,12 @@ export default function Navbar({ styles }: NavbarProps) {
       <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
         <ul>
           <li>
-            <Link href="/crew" className={styles.menuLink}>
+            <Link href="/crew" className={styles.menuLink} prefetch={false}>
               멤버소개
             </Link>
           </li>
           <li>
-            <Link href="/story" className={styles.menuLink}>
+            <Link href="/story" className={styles.menuLink} prefetch={false}>
               이야기
             </Link>
           </li>
