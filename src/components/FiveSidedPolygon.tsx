@@ -140,7 +140,7 @@ export default function FiveSidedPolygon({ skills, styles, }: FiveSidedPolygonPr
     }
   };
 
-  const handleVertexMouseLeave = (skill: keyof Skills) => {
+  const handleVertexMouseLeave = () => {
     setTooltip(null);
   };
 
@@ -171,7 +171,7 @@ export default function FiveSidedPolygon({ skills, styles, }: FiveSidedPolygonPr
         fill="rgba(0,0,0,0)" // 투명
         pointerEvents="all"
         onMouseEnter={() => handleVertexMouseEnter(skill, value, x, y)}
-        onMouseLeave={() => handleVertexMouseLeave(skill)}
+        onMouseLeave={() => handleVertexMouseLeave()}
         onClick={() => handleVertexClick(skill, value, x, y)}
       />
     );

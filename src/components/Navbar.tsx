@@ -28,7 +28,7 @@ export default function Navbar({ styles }: NavbarProps) {
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, [isOpen]);
+  }, [isOpen, styles.navbar]); // styles.navbar 추가로 의존성 경고 제거
 
   // 페이지 이동 시 메뉴 자동 닫기
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function Navbar({ styles }: NavbarProps) {
       </div>
 
       {/* 드롭다운 메뉴 */}
-      <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>
+      <div className={`${styles.menu} ${isOpen ? styles.open : ""}`}>  
         <ul>
           <li>
             <Link href="/crew" className={styles.menuLink} prefetch={false}>
