@@ -17,7 +17,7 @@ export default function CrewCard({ crew, styles }: CrewCardProps) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/crew/${crew.crew_id}`);
+    router.push(`/crew/${crew.crew_id}`, { scroll: false });
   };
 
   return (

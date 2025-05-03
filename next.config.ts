@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    staleTimes: {
+      dynamic: 30,  // 동적 경로를 30초간 캐시
+    },
+  },
   //reactStrictMode: false,
 };
 

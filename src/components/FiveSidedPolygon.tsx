@@ -128,7 +128,6 @@ export default function FiveSidedPolygon({ skills, styles, }: FiveSidedPolygonPr
   const svgSize = totalRadius * 2;
 
   const handleVertexMouseEnter = (skill: keyof Skills, value: number, x: number, y: number) => {
-    console.log(`MouseEnter: ${skill} at (${x}, ${y}) with ${value}점`);
     if (svgRef.current && containerRef.current) {
       const svgRect = svgRef.current.getBoundingClientRect();
       // 스케일링 비율 계산 (실제 픽셀 / viewBox 크기)
@@ -142,12 +141,10 @@ export default function FiveSidedPolygon({ skills, styles, }: FiveSidedPolygonPr
   };
 
   const handleVertexMouseLeave = (skill: keyof Skills) => {
-    console.log(`MouseLeave: ${skill}`);
     setTooltip(null);
   };
 
   const handleVertexClick = (skill: keyof Skills, value: number, x: number, y: number) => {
-    console.log(`Click: ${skill} at (${x}, ${y}) with ${value}점`);
     if (svgRef.current && containerRef.current) {
       const svgRect = svgRef.current.getBoundingClientRect();
       const scale = svgRect.width / svgSize;
