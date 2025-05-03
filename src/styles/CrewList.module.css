@@ -9,3 +9,13 @@
   margin: 40px auto; /* ✅ 페이지 상단과 간격 조정 */
   padding: 0 16px;
 }
+
+@media (max-width: 767px) {
+  .cardGrid {
+    /* grid → flex 로 전환 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* 카드 가운데 정렬 */
+    gap: 32px;            /* 기존 grid gap 유지 */
+  }
+}
