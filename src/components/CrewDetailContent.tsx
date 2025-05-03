@@ -44,7 +44,7 @@ interface CrewDetailContentProps {
 
 function calculateCareer(start: string): string {
     const startYear = parseInt(start.substring(0, 4));
-    const startMonth = parseInt(start.substring(4, 6));
+    const startMonth = parseInt(start.substring(5, 7));
     const now = new Date();
     const currentYear = now.getFullYear();
     const currentMonth = now.getMonth() + 1; // 0부터 시작하므로 +1

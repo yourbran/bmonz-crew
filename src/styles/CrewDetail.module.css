@@ -47,7 +47,7 @@
 /* 기본정보 영역 관련 스타일 */
 .infoList {
   display: grid;
-  grid-template-columns: 170px 1fr; /* 좌측 열: 고정 120px, 우측 열: 남은 공간 */
+  grid-template-columns: 140px 1fr; /* 좌측 열: 고정 120px, 우측 열: 남은 공간 */
   gap: 24px 12px;
   margin: 0 auto;    /* 그리드 자체도 중앙 정렬 */
   width: 100%;
