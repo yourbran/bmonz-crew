@@ -14,6 +14,7 @@ type CrewCardProps = {
 
 export default function CrewCard({ crew, styles }: CrewCardProps) {
   const defaultImage = "/default-avatar.png";
+  
   const router = useRouter();
 
   const handleClick = () => {
