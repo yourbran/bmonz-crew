@@ -15,6 +15,7 @@
     "next-mdx-remote": "^5.0.0",
     "pg": "^8.14.1",
     "react": "^18.2.0",
+    "react-datepicker": "^8.3.0",
     "react-dom": "^18.2.0",
     "rehype-raw": "^7.0.0"
   },
