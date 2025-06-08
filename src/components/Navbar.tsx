@@ -55,6 +55,11 @@ export default function Navbar({ styles }: NavbarProps) {
             </Link>
           </li>
           <li>
+            <Link href="/training" className={styles.menuLink} prefetch={false}>
+              훈련
+            </Link>
+          </li>
+          <li>
             <Link href="/story" className={styles.menuLink} prefetch={false}>
               이야기
             </Link>

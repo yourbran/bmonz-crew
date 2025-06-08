@@ -1,0 +1,353 @@
+.container {
+    max-width: 400px;
+    margin: 80px auto 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* increased gap between steps */
+  }
+  
+  .stepSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .inactive {
+    opacity: 0.5;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+  .inactive .navGroup { display: none; }
+  .inactive .changeLink { display: none; }
+  .inactive .addButton { display: none; }
+  
+  .stepTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  
+  .dateBoxWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .dateBox {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background: #fafafa;
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .dateBoxInner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .centered {
+    justify-content: center;
+  }
+  
+  .changeLink {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  
+  .datePickerWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .datePicker {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+  }
+  
+  .navGroup {
+    display: flex;
+    gap: 1rem; /* increased gap to separate buttons more */
+    margin-top: 1rem; /* added margin above buttons */
+  }
+  
+  .prevButton {
+    flex: 1;
+    padding: 0.75rem;
+    background: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .nextButton {
+    flex: 2;
+    padding: 0.75rem;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .nextButton:active {
+    transform: scale(0.98);
+  }
+  
+  .step2 {
+      display: flex;
+      flex-direction: column;
+  gap: 1rem; /* reduced vertical spacing between components */
+    }
+  
+  .addButton {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .input,
+  .selectInput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .fieldGroup {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .exerciseList {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .exerciseItem {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+  }
+  
+  .listItemText {
+    color: #333;
+  }
+    
+  .deleteButton {
+    background: none;
+    border: none;
+    color: #ff5252;
+    cursor: pointer;
+  }
+  
+  .registerButton {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: #388e3c;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  /* Hide Step1 title when inactive */
+  .stepSection.inactive .stepTitle {
+    display: none;
+  }
+  
+  /* Step2: 입력 박스 스타일 dateBox와 일치 */
+  .input,
+  .selectInput {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background: #fafafa;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .input::placeholder,
+  .selectInput::placeholder {
+    color: #888;
+  }
+  
+  /* 추가: disabled unit box */
+.selectInputDisabled {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background: #fafafa;
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* make smaller width based on flex */
+  }
+  
+  /* hide dropdown arrow */
+  .selectInputDisabled::-ms-expand { display: none; }
+  .selectInputDisabled { appearance: none; -webkit-appearance: none; }
+  
+  .inputWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inputLabel {
+    font-family: "Pretendard Light";
+    font-size: 0.75rem;
+    color: #666;
+    text-align: center;
+  }
+  
+  /* adjust first fieldGroup child widths */
+  .step2 > .fieldGroup:first-of-type > .input {
+    flex: 2;
+  }
+  .step2 > .fieldGroup:first-of-type > .selectInputDisabled {
+    flex: 1;
+  }
+  
+  /* light style for add button */
+  .addButtonLight {
+    font-family: "Pretendard";
+    font-weight: 700;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  .addButtonLight:active { transform: scale(0.98); }
+  
+  .nextButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Step3 전용 리스트 */
+.step3List {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* 각 행: 2:1 비율 */
+  .step3Item {
+    display: flex;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background: #fafafa;
+    overflow: hidden;
+  }
+  
+  /* 좌측 루틴명 영역 (2) */
+  .step3Name {
+    flex: 2;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* 우측 콤보박스 영역 (1) */
+  .step3Select {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    background: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    appearance: none;
+    text-align: center;
+  }
+
+  /* Slider 전체 너비 */
+.slider {
+    flex: 1;
+    margin: 0.5rem 0;
+  }
+  
+  /* Slider 아래 선택값 표시 */
+  .sliderValue {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #333;
+  }
+
+  .pickerOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 2000;
+  }
+  .pickerContainer {
+    background: #fff;
+    width: 100%;
+    max-width: 400px;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    padding: 1rem;
+  }
+  .pickerConfirm {
+    margin-top: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background: #555;
+    color: #fff;
+    border: none;
+    border-radius: 0.375rem;
+    text-align: center;
+  }

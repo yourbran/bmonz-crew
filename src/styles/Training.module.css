@@ -1,0 +1,58 @@
+.pageContainer {
+  max-width: 400px;
+  margin: 60px auto 0; /* 헤더 높이만큼 상단 여백 */
+  padding: 6vh 5vw;
+  height: calc(100vh - var(--header-height));
+  overflow: auto;
+}
+
+.title {
+  font-family: "yg-jalnan", sans-serif;
+  text-align: center;
+  margin-bottom: 2rem; /* 제목과 버튼 사이 간격 추가 */
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  justify-content: center; /* 버튼을 가로 중앙 정렬 */
+  margin-bottom: 0.75rem; /* 버튼 간 간격 */
+}
+
+.link {
+  display: inline-block;
+  width: 80%;
+  min-width: 200px;
+  padding: 0.75rem 1rem;
+  background-color: #f5f5f5; /* 부드러운 연회색 배경 */
+  color: #333333;       /* 짙은 회색 텍스트 */
+  border: 2px solid #dddddd; /* 연한 회색 테두리 */
+  border-radius: 0.5rem;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* PC 환경: 마우스 hover 효과 */
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    background-color: #e0e0e0; /* 약간 짙은 회색 */
+    color: #000000; /* 완전 검정으로 강조 */
+  }
+}
+
+/* 모바일 환경: 터치 press 효과 */
+@media (hover: none) and (pointer: coarse) {
+  .link:active {
+    background-color: #e0e0e0;
+    transform: translateY(2px) scale(0.98);
+  }
+}
